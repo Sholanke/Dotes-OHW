@@ -1,0 +1,119 @@
+.app {
+  &__side-bar {
+    background-color: #f8f8f8;
+    border-right: 1px solid rgba(0, 0, 0, 0.09);
+    display: flex;
+    flex-direction: column;
+
+    &__links {
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+
+      &-container {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      &__link {
+        padding: 10px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        opacity: 0.7;
+        display: flex;
+        align-items: center;
+        line-height: 1;
+
+        svg {
+          margin: 0 10px 2px 0;
+        }
+
+        &:hover {
+          opacity: 0.9;
+        }
+
+        &.active {
+          opacity: 1;
+          background: #e8e9ebdc;
+        }
+      }
+    }
+  }
+
+  .profile-btn {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+
+    &__picture {
+      height: 30px;
+      display: block;
+      border-radius: 100vh;
+      width: 30px;
+      background-color: rgb(223, 223, 223);
+      margin-right: 10px;
+      position: relative;
+
+      &:after {
+        content: "";
+        height: 10px;
+        width: 10px;
+        background: rgb(55, 196, 55);
+        position: absolute;
+        border-radius: inherit;
+        bottom: -1px;
+        right: -2.5px;
+        border: 2px solid #f8f8f8;
+      }
+    }
+  }
+
+  &__header {
+    padding: 20px;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+
+    &__work-space {
+      background: rgb(255, 255, 255);
+      border: 1px solid rgba(0, 0, 0, 0.09);
+      padding: 7px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+
+      .icon {
+        height: 45px;
+        width: 45px;
+        background-color: tomato;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          height: 30px;
+          width: 30px;
+
+          path {
+            color: #fff;
+          }
+        }
+      }
+
+      .text {
+        margin-left: 10px;
+
+        .name {
+          font-weight: 700;
+        }
+        .type {
+          font-size: 12px;
+          opacity: 0.7;
+          margin-top: 4px;
+        }
+      }
+    }
+  }
+}
