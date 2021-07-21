@@ -21,7 +21,7 @@ export default function SideBar() {
             </svg>
           </div>
           <div className="text">
-            <p className="name">Fintory</p>
+            <p className="name">Asteroids ☄️</p>
             <p className="type">Workspace</p>
           </div>
         </div>
