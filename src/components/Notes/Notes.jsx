@@ -127,7 +127,10 @@ function Note() {
     <div className="app-note">
       <div className="app-note__header">
         <div className="info">
-          <span className="picture" style={{ backgroundImage: `url("http://tinygraphs.com/squares/tinygraphs?theme=heatwave&numcolors=4&size=220&fmt=svg")` }}></span>
+          <span
+            className="picture"
+            style={{ backgroundImage: `url("/assets/pictureHolder.svg")` }}
+          ></span>
           <div className="text">
             <div className="name">Chris Kruger</div>
             <p className="time">
