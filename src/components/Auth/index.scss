@@ -1,0 +1,56 @@
+.auth-page {
+  background: #fafafe;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  height: 100vh;
+  overflow: auto;
+
+  &__form {
+    width: 100%;
+    max-width: 330px;
+    margin: 0 auto;
+
+    .btn {
+      width: 100%;
+      justify-content: center;
+      padding: 15px 20px;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+
+    &__heading {
+      text-align: center;
+
+      &__logo {
+        margin-bottom: 20px;
+        height: 60px;
+        width: 60px;
+        path {
+          color: tomato;
+        }
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      p {
+        margin: 20px auto 40px auto;
+        line-height: 1.5;
+        font-size: 16px;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__base-text {
+    text-align: center;
+    font-style: italic;
+
+    a {
+      color: tomato;
+      text-decoration: underline;
+    }
+  }
+}

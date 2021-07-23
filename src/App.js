@@ -1,16 +1,7 @@
-import Notes from "./components/Notes/Notes";
-import SideBar from "./components/SideBar/SideBar";
+import Routes from "./Routes";
 
 function App() {
-  return (
-    <div className="app">
-      <SideBar />
-
-      <div className="app-content">
-        <Notes />
-      </div>
-    </div>
-  );
+  return <Routes />;
 }
 
 export default App;
