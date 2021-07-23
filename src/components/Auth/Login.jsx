@@ -34,7 +34,7 @@ export default function Login() {
           className="base-input"
           placeholder="Enter Your Password"
         />
-        <button className="btn">Create Account</button>
+        <button className="btn">Sign In</button>
 
         <p className="auth-page__base-text">
           Don't have an Account? <NavLink to="/register">Register</NavLink>

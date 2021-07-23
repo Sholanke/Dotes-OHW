@@ -30,27 +30,27 @@ export default function Register() {
         <input
           type="text"
           className="base-input"
-          placeholder="Enter Your First Name"
+          placeholder="Enter your First Name"
         />
         <input
           type="text"
           className="base-input"
-          placeholder="Enter Your Last Name"
+          placeholder="Enter your Last Name"
         />
         <input
           type="text"
           className="base-input"
-          placeholder="Enter Your Email"
+          placeholder="Enter your Email"
         />
         <input
           type="text"
           className="base-input"
-          placeholder="Enter Your Password"
+          placeholder="Enter your Password"
         />
         <input
           type="text"
           className="base-input"
-          placeholder="Enter Your Confirm Password"
+          placeholder="Enter your Confirm Password"
         />
 
         <button className="btn">Create Account</button>
