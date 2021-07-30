@@ -1,11 +1,45 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, Redirect } from "react-router-dom";
+import { useUserContext } from "../../context/UserProvider";
 import Auth from "./Auth";
 
 export default function Login() {
+  const user = useUserContext();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [loading, setLoading] = useState();
+  const [redirect, setRedirect] = useState();
+
+  const handleInputChange = ({ currentTarget: { name, value } }) => {
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const login = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const { email, password } = formData;
+    user
+      .login({ email, password }, () => {
+        setRedirect("/");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   return (
     <Auth>
-      <form className="auth-page__form">
+      {!!redirect && <Redirect to={redirect} />}
+
+      <form onSubmit={login} className="auth-page__form">
         <div className="auth-page__form__heading">
           <svg
             width="24"
@@ -28,13 +62,21 @@ export default function Login() {
           type="text"
           className="base-input"
           placeholder="Enter Your Email"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
         />
         <input
-          type="text"
+          type="password"
           className="base-input"
           placeholder="Enter Your Password"
+          name="password"
+          value={formData.password}
+          onChange={handleInputChange}
         />
-        <button className="btn">Sign In</button>
+        <button className="btn" disabled={loading}>
+          Sign In
+        </button>
 
         <p className="auth-page__base-text">
           Don't have an Account? <NavLink to="/register">Register</NavLink>

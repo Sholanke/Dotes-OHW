@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-// import { useUserContext } from "../../context/UserProvider";
+import { NavLink, Redirect } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useUserContext } from "../../context/UserProvider";
 import Auth from "./Auth";
 
 export default function Register() {
-  // const user = useUserContext();
+  const user = useUserContext();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -13,6 +14,9 @@ export default function Register() {
     fullname: "",
     workspace: "",
   });
+
+  const [loading, setLoading] = useState();
+  const [redirect, setRedirect] = useState();
 
   const handleInputChange = ({ currentTarget: { name, value } }) => {
     setFormData((prev) => ({
@@ -23,20 +27,37 @@ export default function Register() {
 
   const register = (e) => {
     e.preventDefault();
-
-    // const url = `https://dotess.herokuapp.com/register?${new URLSearchParams(formData).toString()}`;
+    setLoading(true);
     const url = `https://dotess.herokuapp.com/register`;
 
     fetch(url, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(formData),
-    }).then((data) => {
-      console.log(data);
-    });
+    })
+      .then((res) => res.json())
+      .then((responseObject) => {
+        console.log(responseObject);
+        if (responseObject.status !== "error") {
+          const { email, password } = formData;
+          user.login({ email, password }).then(() => {
+            setRedirect("/");
+          });
+          toast.success("Registration Successful");
+        } else {
+          toast.error(responseObject.message);
+        }
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
     <Auth>
+      {!!redirect && <Redirect to={redirect} />}
       <form onSubmit={register} className="auth-page__form">
         <div className="auth-page__form__heading">
           <svg
@@ -100,7 +121,9 @@ export default function Register() {
           onChange={handleInputChange}
         />
 
-        <button className="btn">Create Account</button>
+        <button className="btn" disabled={loading}>
+          Create Account
+        </button>
 
         <p className="auth-page__base-text">
           Already have an Account? <NavLink to="/login">Log In</NavLink>

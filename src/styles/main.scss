@@ -43,6 +43,11 @@ input {
   cursor: pointer;
   transition: 0.2s ease;
 
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
   &:hover {
     transform: scale(0.95);
   }
