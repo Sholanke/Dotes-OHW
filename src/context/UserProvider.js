@@ -26,13 +26,18 @@ export default function UserProvider({ children }) {
           triggerSetData({ token: responseObject.data.token });
           successFn();
           toast.success("Authenticated Successfully");
+        } else {
+          toast.error(responseObject.message);
         }
       });
   };
 
+  const logOut = () => {
+    triggerSetData({ token: "" });
+  };
+
   const getUserData = (token) => {
     const url = `https://dotess.herokuapp.com/profile`;
-    
 
     return fetch(url, {
       method: "GET",
@@ -56,7 +61,9 @@ export default function UserProvider({ children }) {
   }, [user.token]);
 
   return (
-    <userContext.Provider value={{ ...user, login, set: triggerSetData }}>
+    <userContext.Provider
+      value={{ ...user, login, logOut, set: triggerSetData }}
+    >
       {children}
     </userContext.Provider>
   );
