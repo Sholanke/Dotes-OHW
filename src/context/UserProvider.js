@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const userContext = createContext();
 const initialToken = localStorage.getItem("token") || "";
@@ -24,6 +25,7 @@ export default function UserProvider({ children }) {
         if (responseObject.status !== "error") {
           triggerSetData({ token: responseObject.data.token });
           successFn();
+          toast.success("Authenticated Successfully");
         }
       });
   };

@@ -1,7 +1,9 @@
 import React from "react";
+import { useUserContext } from "../../context/UserProvider";
 import "./index.scss";
 
 export default function SideBar() {
+  const user = useUserContext();
   return (
     <div className="app__side-bar">
       <div className="app__header">
@@ -140,7 +142,7 @@ export default function SideBar() {
                 backgroundImage: `url("http://tinygraphs.com/squares/tinygraphs?theme=heatwave&numcolors=4&size=220&fmt=svg")`,
               }}
             ></div>
-            Sholanke Olamide
+            {user.fullname}
           </div>
         </div>
       </div>
