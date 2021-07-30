@@ -57,8 +57,8 @@ export default function UserProvider({ children }) {
   };
 
   useEffect(() => {
+    localStorage.setItem("token", user.token);
     if (user.token) {
-      localStorage.setItem("token", user.token);
       getUserData(user.token);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
