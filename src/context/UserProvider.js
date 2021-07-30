@@ -48,7 +48,11 @@ export default function UserProvider({ children }) {
     })
       .then((res) => res.json())
       .then((responseObject) => {
-        triggerSetData({ ...responseObject.data.user_details });
+        if (responseObject?.status !== "error") {
+          triggerSetData({ ...responseObject.data.user_details });
+        } else {
+          logOut();
+        }
       });
   };
 
