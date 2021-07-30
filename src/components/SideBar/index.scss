@@ -26,6 +26,11 @@
         align-items: center;
         line-height: 1;
 
+        &[disabled] {
+          opacity: 0.3;
+          pointer-events: none;
+        }
+
         svg {
           margin: 0 10px 2px 0;
         }
