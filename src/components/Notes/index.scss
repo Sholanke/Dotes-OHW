@@ -143,3 +143,17 @@
     line-height: 1.5;
   }
 }
+
+.app-create-note {
+  &__form {
+    .btn {
+      margin-left: 10px;
+    }
+    &__footer {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+}

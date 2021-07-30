@@ -1,8 +1,19 @@
-import React from "react";
+import React from "react"; // , { useEffect }
 import DefaultLayout from "../Layout/Layout";
+import useModalState from "../hooks/useModalState";
 import "./index.scss";
+// import { toast } from "react-toastify";
 
 export default function Notes() {
+  const [createNoteModalIsOpen, toggleCreateNoteModalIsOpen] =
+    useModalState(false);
+
+  // useEffect(() => {
+  // toast.success("Wow so easy");
+  // toast.error("Wow so easy");
+  // toast("Wow so easy");
+  // }, []);
+
   return (
     <DefaultLayout>
       <div className="app-notes">
@@ -10,7 +21,10 @@ export default function Notes() {
           <div className="app-notes__header">
             <div className="app-notes__header__title-row">
               <p className="app-notes__header__title-row__title">Notes</p>
-              <button className="app-notes__header__title-row__btn btn">
+              <button
+                className="app-notes__header__title-row__btn btn"
+                onClick={toggleCreateNoteModalIsOpen}
+              >
                 <svg
                   width="16"
                   height="16"
@@ -121,6 +135,10 @@ export default function Notes() {
           </div>
         </div>
       </div>
+
+      {createNoteModalIsOpen && (
+        <CreateNote closeFn={toggleCreateNoteModalIsOpen} />
+      )}
     </DefaultLayout>
   );
 }
@@ -149,6 +167,42 @@ function Note() {
         Hi guys, I would like to suggest that we set a fixed focus time within
         the company, where you can work in a focused environment.
       </p>
+    </div>
+  );
+}
+
+function CreateNote({ closeFn }) {
+  return (
+    <div className="app-create-note base-modal-container">
+      <div className="base-modal">
+        <div className="base-modal__header">
+          <p className="base-modal__header__heading">Create A Note</p>
+          <button
+            className="base-modal__header__close-btn"
+            onClick={closeFn}
+          ></button>
+        </div>
+
+        <form className="app-create-note__form" action="">
+          <input type="text" className="base-input" placeholder="Enter Title" />
+
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Enter Description"
+            className="base-textarea"
+          ></textarea>
+
+          <div className="app-create-note__form__footer">
+            <button className="btn--inverted" onClick={closeFn}>
+              Cancel
+            </button>
+            <button className="btn">Create Note </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

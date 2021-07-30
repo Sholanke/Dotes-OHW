@@ -29,7 +29,7 @@ export default function SideBar() {
 
       <div className="app__side-bar__links-container">
         <div className="app__side-bar__links">
-          <a href="/" className="app__side-bar__links__link">
+          <a href="/" className="app__side-bar__links__link" disabled>
             <svg
               width="24"
               height="24"
@@ -55,7 +55,7 @@ export default function SideBar() {
             Search
           </a>
 
-          <a href="/" className="app__side-bar__links__link">
+          <a href="/" className="app__side-bar__links__link" disabled>
             <svg
               width="24"
               height="24"
@@ -89,7 +89,7 @@ export default function SideBar() {
             Notes
           </a>
 
-          <a href="/" className="app__side-bar__links__link">
+          <a href="/" className="app__side-bar__links__link" disabled>
             <svg
               width="24"
               height="24"

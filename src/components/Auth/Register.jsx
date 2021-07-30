@@ -1,11 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+// import { useUserContext } from "../../context/UserProvider";
 import Auth from "./Auth";
 
 export default function Register() {
+  // const user = useUserContext();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    repeat_password: "",
+    fullname: "",
+    workspace: "",
+  });
+
+  const handleInputChange = ({ currentTarget: { name, value } }) => {
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const register = (e) => {
+    e.preventDefault();
+
+    // const url = `https://dotess.herokuapp.com/register?${new URLSearchParams(formData).toString()}`;
+    const url = `https://dotess.herokuapp.com/register`;
+
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(formData),
+    }).then((data) => {
+      console.log(data);
+    });
+  };
+
   return (
     <Auth>
-      <form className="auth-page__form">
+      <form onSubmit={register} className="auth-page__form">
         <div className="auth-page__form__heading">
           <svg
             width="24"
@@ -30,27 +62,42 @@ export default function Register() {
         <input
           type="text"
           className="base-input"
-          placeholder="Enter your First Name"
-        />
-        <input
-          type="text"
-          className="base-input"
-          placeholder="Enter your Last Name"
+          placeholder="Enter your Full Name"
+          name="fullname"
+          value={formData.fullname}
+          onChange={handleInputChange}
         />
         <input
           type="text"
           className="base-input"
           placeholder="Enter your Email"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
         />
         <input
-          type="text"
           className="base-input"
           placeholder="Enter your Password"
+          name="password"
+          type="password"
+          value={formData.password}
+          onChange={handleInputChange}
+        />
+        <input
+          className="base-input"
+          placeholder="Confirm your Password"
+          name="repeat_password"
+          type="password"
+          value={formData.repeat_password}
+          onChange={handleInputChange}
         />
         <input
           type="text"
           className="base-input"
-          placeholder="Enter your Confirm Password"
+          placeholder="workspace"
+          name="workspace"
+          value={formData.workspace}
+          onChange={handleInputChange}
         />
 
         <button className="btn">Create Account</button>
