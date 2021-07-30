@@ -32,6 +32,7 @@ export default function UserProvider({ children }) {
 
   const getUserData = (token) => {
     const url = `https://dotess.herokuapp.com/profile`;
+    
 
     return fetch(url, {
       method: "GET",

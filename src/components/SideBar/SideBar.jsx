@@ -23,7 +23,7 @@ export default function SideBar() {
             </svg>
           </div>
           <div className="text">
-            <p className="name">Asteroids ☄️</p>
+            <p className="name">{user.workspace} ☄️</p>
             <p className="type">Workspace</p>
           </div>
         </div>
