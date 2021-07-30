@@ -24,7 +24,7 @@ export default function UserProvider({ children }) {
       .then((responseObject) => {
         if (responseObject.status !== "error") {
           triggerSetData({ token: responseObject.data.token });
-          successFn();
+          successFn?.();
           toast.success("Authenticated Successfully");
         } else {
           toast.error(responseObject.message);
